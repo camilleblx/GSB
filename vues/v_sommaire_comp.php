@@ -1,4 +1,4 @@
-<!-- Division pour le sommaire -->
+    <!-- Division pour le sommaire -->
     <div id="menuGauche">
      <div id="infosUtil">
     
@@ -9,13 +9,15 @@
       </div>  
         <ul id="menuList">
 			<li >
-				  Comptable :<br> 
-                            
-                            
+				  Comptable :<br>
 				<?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>
 			</li>
            <li class="smenu">
-              <a href="index.php?uc=etatFrais&action=saisirFrais" title="Fiche de frais à valider ">Fiche de frais à valider</a>
+              <a href="index.php?uc=gererFrais&action=saisirFrais" title="Saisie fiche de frais ">Valider fiche de frais</a>
+           </li>
+           
+		   <li class="smenu">
+              <a href="index.php?uc=validerFiche&action=selectionnerMois" title="voir fiche">Les fiches de frais</a>
            </li>
  	   <li class="smenu">
               <a href="index.php?uc=connexion&action=deconnexion" title="Se dÃ©connecter">DÃ©connexion</a>
