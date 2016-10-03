@@ -1,5 +1,5 @@
 <?php
-include("vues/v_sommaire.php");
+include("vues/v_sommaire_comp.php");
 $idVisiteur = $_SESSION['idVisiteur'];
 $mois = getMois(date("d/m/Y"));
 $numAnnee =substr( $mois,0,4);
@@ -18,7 +18,7 @@ switch($action){
 	  	 	$pdo->majFraisForfait($idVisiteur,$mois,$lesFrais);
 		}
 		else{
-			ajouterErreur("Les valeurs des frais doivent être numériques");
+			ajouterErreur("Les valeurs des frais doivent Ãªtre numÃ©riques");
 			include("vues/v_erreurs.php");
 		}
 	  break;

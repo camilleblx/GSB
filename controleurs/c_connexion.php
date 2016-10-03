@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if(!isset($_REQUEST['action'])){
 	$_REQUEST['action'] = 'demandeConnexion';
 }
@@ -20,7 +20,8 @@ switch($action){
 			include("vues/v_erreurs.php");
 			include("vues/v_connexion.php");
 		}
-		   elseif ($visiteur['comptable'] == '1'){
+		    elseif ($visiteur['comp'] == '1'){
+			
 			$id = $visiteur['id'];
 			$nom =  $visiteur['nom'];
 			$prenom = $visiteur['prenom'];

@@ -1,11 +1,11 @@
-<?php
+
+
+ <?php
  
 
 $action = $_REQUEST['action'];
 
-$mois = getMois(date("d/m/Y"));
-//$numAnnee = substr($mois, 0, 4);
-//$numMois = substr($mois, 4, 2);
+
 include("vues/v_sommaire_comp.php");
 switch($action){
 
@@ -19,17 +19,18 @@ switch($action){
 	}
 	
 	case 'selectionnerVisiteur' :{
-		
-		$mois = $_POST['mois'];
-		// $_SESSION ['mois'] = $mois;
-		//$mois = $_REQUEST['mois'];
+		  $mois = $_POST['mois'];
 		$lesVisiteurs = $pdo->getInfosVisiteurMois($mois) ;
-			include("vues/v_listeVisiteurComp.php");
+		include("vues/v_listeVisiteursMois.php");
 		break;
-	
 		
 	}
+	case 'afficheFiche' :{
+		$mois = $_SESSION['mois'];
+		$id = $_POST['id'];
+		$LesFiches = $pdo->getLesFraisForfait($id, $mois);
 		
+	}	
 
 
 
