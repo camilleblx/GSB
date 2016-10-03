@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 /** 
  * Fonctions pour l'application GSB
  
@@ -7,7 +7,7 @@
  * @version    1.0
  */
  /**
- * Teste si un quelconque visiteur est connectÃ©
+ * Teste si un quelconque visiteur est connecté
  * @return vrai ou faux 
  */
 function estConnecte(){
@@ -26,41 +26,13 @@ function connecter($id,$nom,$prenom){
 	$_SESSION['prenom']= $prenom;
 }
 /**
- * DÃ©truit la session active
+ * Détruit la session active
  */
 function deconnecter(){
 	session_destroy();
 }
-
 /**
- * Teste si un quelconque visiteur est connectÃ©
- * @return vrai ou faux 
- */
-function estConnecteComptable(){
-  return isset($_SESSION['idcomptable']);
-}
-/**
- * Enregistre dans une variable session les infos d'un visiteur
- 
- * @param $id 
- * @param $nom
- * @param $prenom
- */
-function connecterComptable($id,$nom,$prenom){
-	$_SESSION['idcomptable']= $id_comptable; 
-	$_SESSION['nom']= $nom_comptable;
-	$_SESSION['prenom']= $prenom_comptable;
-}
-/**
- * DÃ©truit la session active
- */
-function deconnecterComptable(){
-	session_destroy();
-}
-
-
-/**
- * Transforme une date au format franÃ§ais jj/mm/aaaa vers le format anglais aaaa-mm-jj
+ * Transforme une date au format français jj/mm/aaaa vers le format anglais aaaa-mm-jj
  
  * @param $madate au format  jj/mm/aaaa
  * @return la date au format anglais aaaa-mm-jj
@@ -70,10 +42,10 @@ function dateFrancaisVersAnglais($maDate){
 	return date('Y-m-d',mktime(0,0,0,$mois,$jour,$annee));
 }
 /**
- * Transforme une date au format format anglais aaaa-mm-jj vers le format franÃ§ais jj/mm/aaaa 
+ * Transforme une date au format format anglais aaaa-mm-jj vers le format français jj/mm/aaaa 
  
  * @param $madate au format  aaaa-mm-jj
- * @return la date au format format franÃ§ais jj/mm/aaaa
+ * @return la date au format format français jj/mm/aaaa
 */
 function dateAnglaisVersFrancais($maDate){
    @list($annee,$mois,$jour)=explode('-',$maDate);
@@ -107,7 +79,7 @@ function estEntierPositif($valeur) {
 }
 
 /**
- * Indique si un tableau de valeurs est constituÃ© d'entiers positifs ou nuls
+ * Indique si un tableau de valeurs est constitué d'entiers positifs ou nuls
  
  * @param $tabEntiers : le tableau
  * @return vrai ou faux
@@ -122,7 +94,7 @@ function estTableauEntiers($tabEntiers) {
 	return $ok;
 }
 /**
- * VÃ©rifie si une date est infÃ©rieure d'un an Ã  la date actuelle
+ * Vérifie si une date est inférieure d'un an à la date actuelle
  
  * @param $dateTestee 
  * @return vrai ou faux
@@ -136,7 +108,7 @@ function estDateDepassee($dateTestee){
 	return ($anneeTeste.$moisTeste.$jourTeste < $AnPasse); 
 }
 /**
- * VÃ©rifie la validitÃ© du format d'une date franÃ§aise jj/mm/aaaa 
+ * Vérifie la validité du format d'une date française jj/mm/aaaa 
  
  * @param $date 
  * @return vrai ou faux
@@ -161,7 +133,7 @@ function estDateValide($date){
 }
 
 /**
- * VÃ©rifie que le tableau de frais ne contient que des valeurs numÃ©riques 
+ * Vérifie que le tableau de frais ne contient que des valeurs numériques 
  
  * @param $lesFrais 
  * @return vrai ou faux
@@ -170,9 +142,9 @@ function lesQteFraisValides($lesFrais){
 	return estTableauEntiers($lesFrais);
 }
 /**
- * VÃ©rifie la validitÃ© des trois arguments : la date, le libellÃ© du frais et le montant 
+ * Vérifie la validité des trois arguments : la date, le libellé du frais et le montant 
  
- * des message d'erreurs sont ajoutÃ©s au tableau des erreurs
+ * des message d'erreurs sont ajoutés au tableau des erreurs
  
  * @param $dateFrais 
  * @param $libelle 
@@ -180,7 +152,7 @@ function lesQteFraisValides($lesFrais){
  */
 function valideInfosFrais($dateFrais,$libelle,$montant){
 	if($dateFrais==""){
-		ajouterErreur("Le champ date ne doit pas Ãªtre vide");
+		ajouterErreur("Le champ date ne doit pas être vide");
 	}
 	else{
 		if(!estDatevalide($dateFrais)){
@@ -188,25 +160,25 @@ function valideInfosFrais($dateFrais,$libelle,$montant){
 		}	
 		else{
 			if(estDateDepassee($dateFrais)){
-				ajouterErreur("date d'enregistrement du frais dÃ©passÃ©, plus de 1 an");
+				ajouterErreur("date d'enregistrement du frais dépassé, plus de 1 an");
 			}			
 		}
 	}
 	if($libelle == ""){
-		ajouterErreur("Le champ description ne peut pas Ãªtre vide");
+		ajouterErreur("Le champ description ne peut pas être vide");
 	}
 	if($montant == ""){
-		ajouterErreur("Le champ montant ne peut pas Ãªtre vide");
+		ajouterErreur("Le champ montant ne peut pas être vide");
 	}
 	else
 		if( !is_numeric($montant) ){
-			ajouterErreur("Le champ montant doit Ãªtre numÃ©rique");
+			ajouterErreur("Le champ montant doit être numérique");
 		}
 }
 /**
- * Ajoute le libellÃ© d'une erreur au tableau des erreurs 
+ * Ajoute le libellé d'une erreur au tableau des erreurs 
  
- * @param $msg : le libellÃ© de l'erreur 
+ * @param $msg : le libellé de l'erreur 
  */
 function ajouterErreur($msg){
    if (! isset($_REQUEST['erreurs'])){

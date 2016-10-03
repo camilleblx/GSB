@@ -9,20 +9,13 @@
       </div>  
         <ul id="menuList">
 			<li >
-                            
-                            
-                            
-                            
-				  Visiteur :<br> 
+				  Comptable :<br> 
                             
                             
 				<?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>
 			</li>
            <li class="smenu">
-              <a href="index.php?uc=gererFrais&action=saisirFrais" title="Saisie fiche de frais ">Saisie fiche de frais</a>
-           </li>
-           <li class="smenu">
-              <a href="index.php?uc=etatFrais&action=selectionnerMois" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
+              <a href="index.php?uc=etatFrais&action=saisirFrais" title="Fiche de frais à valider ">Fiche de frais à valider</a>
            </li>
  	   <li class="smenu">
               <a href="index.php?uc=connexion&action=deconnexion" title="Se dÃ©connecter">DÃ©connexion</a>

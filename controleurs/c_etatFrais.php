@@ -1,18 +1,20 @@
-ï»¿<?php
+<?php
 include("vues/v_sommaire.php");
 $action = $_REQUEST['action'];
 $idVisiteur = $_SESSION['idVisiteur'];
 switch($action){
+	
 	case 'selectionnerMois':{
 		$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
-		// Afin de sÃ©lectionner par dÃ©faut le dernier mois dans la zone de liste
-		// on demande toutes les clÃ©s, et on prend la premiÃ¨re,
-		// les mois Ã©tant triÃ©s dÃ©croissants
+		// Afin de sélectionner par défaut le dernier mois dans la zone de liste
+		// on demande toutes les clés, et on prend la première,
+		// les mois étant triés décroissants
 		$lesCles = array_keys( $lesMois );
 		$moisASelectionner = $lesCles[0];
 		include("vues/v_listeMois.php");
 		break;
 	}
+	
 	case 'voirEtatFrais':{
 		$leMois = $_REQUEST['lstMois']; 
 		$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
