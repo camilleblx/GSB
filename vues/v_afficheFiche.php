@@ -43,11 +43,13 @@
                 $date = $unFraisHorsForfait['date'];
                 $libelle = $unFraisHorsForfait['libelle'];
                 $montant = $unFraisHorsForfait['montant'];
+                $id = $unFraisHorsForfait['id'];
                 ?>
                 <tr>
                     <td><?php echo $date ?></td>
                     <td><?php echo $libelle ?></td>
                     <td><?php echo $montant ?></td>
+                     <td><a href="index.php?uc=validerFiche&action=refusFrais&id=<?php echo $id;?>&libelle=<?php echo $libelle;?>">Refuser</a></td>
                 </tr>
                 <?php
             }

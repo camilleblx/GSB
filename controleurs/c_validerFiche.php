@@ -70,5 +70,22 @@ switch ($action) {
             include("vues/v_modification.php");
             break;
         }
+        
+     case 'refusFrais' : {
+
+            $mois = $_SESSION['mois'];
+            $idVisiteur = $_SESSION['idVisiteur'];
+            $id = $_REQUEST['id'];
+            $libelle = $_REQUEST['libelle'];
+            $pdo->refusFraisHorsForfait($id,$libelle);
+            include("vues/v_refus.php");
+            break;
+        }   
+        
+        
+        
+        
+        
+        
 }
 ?>
