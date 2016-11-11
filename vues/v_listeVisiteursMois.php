@@ -1,14 +1,14 @@
  <div id="contenu">
       <h2>Les Visiteurs</h2>
 	    <a href="index.php?uc=validerFiche&action=selectionnerMois" >Changer de mois </a>
-      <h3>Visiteur  Ã  sÃ©lectionner : </h3>
+      <h3>Visiteur  à sélectionner : </h3>
       <form action="index.php?uc=validerFiche&action=afficheFiche" method="post">
       <div class="corpsForm">
          
       <p>
 	 
         <label for="lstVisiteurs" accesskey="n">Visiteur(s):</label>
-        <select id="lstVisiteurs" name="id">
+        <select id="lstVisiteurs" name="idVisiteur">
             <?php
 			foreach ($lesVisiteurs as $unVisiteur)
 			{
