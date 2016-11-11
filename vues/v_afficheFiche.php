@@ -50,6 +50,8 @@
                     <td><?php echo $libelle ?></td>
                     <td><?php echo $montant ?></td>
                      <td><a href="index.php?uc=validerFiche&action=refusFrais&id=<?php echo $id;?>&libelle=<?php echo $libelle;?>">Refuser</a></td>
+                     <td><a href="index.php?uc=validerFiche&action=reporterFrais&id=<?php echo $id;?>">Reporter</a></td>
+                      <td><a href="index.php?uc=validerFiche&action=validerFrais&id=<?php echo $id;?>">Valider</a></td>
                 </tr>
                 <?php
             }

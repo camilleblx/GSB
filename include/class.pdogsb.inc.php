@@ -218,6 +218,27 @@ class PdoGsb {
         PdoGsb::$monPdo->exec($req);
     }
 
+    public function reportFraisHorsForfait($moisSuivant, $idVisiteur, $id) {
+        $req = "update lignefraishorsforfait set mois ='$moisSuivant' where idVisiteur='$idVisiteur' and id ='$id'";
+        PdoGsb::$monPdo->exec($req);
+    }
+    
+      
+     public function validerFicheFrais($idVisiteur, $mois, $montantTotal) {
+        $req = "update fichefrais set idEtat = 'VA', montantValide = '$montantTotal', datemodif= now() where idvisiteur = '$idVisiteur' and mois ='$mois' ";
+        //echo $req;
+        PdoGsb::$monPdo->exec($req);
+    }
+      public function montantTotal($idVisiteur, $mois) {
+       /* $req = "select sum(montant) as montantTotalFraisHF from lignefraishorsforfait  where idVisiteur='$idVisiteur' and mois='$mois' and idEtat='VA'";
+        $res = PdoGsb::$monPdo->query($req);
+        $montantHF = $res->fetch();*/
+        $req = "select SUM(montant * quantite) as montantFraisForfait from fraisforfait inner join lignefraisforfait on fraisforfait.id = lignefraisforfait.idfraisforfait where idvisiteur = '$idVisiteur' and mois ='$mois'";
+        $res = PdoGsb::$monPdo->query($req);
+        $montantForfait = $res->fetch();
+        $montantTotal = $montantForfait['montantFraisForfait'];
+        return $montantTotal;
+    }
     /**
      *      
      * met à jour le nombre de justificatifs de la table ficheFrais
@@ -264,7 +285,8 @@ class PdoGsb {
         $dernierMois = $laLigne['dernierMois'];
         return $dernierMois;
     }
-
+    
+    
     /**
      * Crée une nouvelle fiche de frais et les lignes de frais au forfait pour un visiteur et un mois donnés
 
@@ -385,11 +407,22 @@ class PdoGsb {
         $laLigne = $res->fetch();
         return $laLigne;
     }
-
+  /*  public function getMoisSuivant ($annee ,$mois){
+        
+        $mois = $mois+1 ;
+        
+        if ($mois = 12 ){
+            $annee = $annee +1 ;
+            $mois = '01';
+            
+        }
+        
+    }*/
+    
     /**
-     * Modifie l'état et la date de modification d'une fiche de frais
+     * Modifie l'�tat et la date de modification d'une fiche de frais
 
-     * Modifie le champ idEtat et met la date de modif à aujourd'hui
+     * Modifie le champ idEtat et met la date de modif � aujourd'hui
      * @param $idVisiteur 
      * @param $mois sous la forme aaaamm
      */
