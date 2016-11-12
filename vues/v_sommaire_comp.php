@@ -15,6 +15,9 @@
 		   <li class="smenu">
               <a href="index.php?uc=validerFiche&action=selectionnerMois" title="voir fiche">Les fiches de frais</a>
            </li>
+           <li class="smenu">
+              <a href="index.php?uc=suivrePaiement&action=selectionnerMois" title="suivre paiement">Suivre paiement</a>
+           </li>
  	   <li class="smenu">
               <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
            </li>
